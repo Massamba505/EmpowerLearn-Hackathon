@@ -1,16 +1,17 @@
+
 {
   "name": "empowerlearn-hackathon",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "prestart": "cd frontend && npm run build && cd ..",
-    "start": "nodemon backend/bin/www"
+    "start": "node backend/bin/www"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "nodemon": "^3.1.4"
+    "axios": "^1.7.2"
   }
 }

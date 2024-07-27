@@ -16,11 +16,10 @@ const HomePage = () => {
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
-       
       </header>
       <main className="main">
         <section className="hero">
-          <img src={heroImage} alt="Hero" className="hero-image" /> {/* Hero image */}
+          <img src={heroImage} alt="Hero" className="hero-image" />
           <h2>Empowering Education for Underprivileged Communities</h2>
           <p>Providing access to quality education, personalized learning, and community support.</p>
           <a href="#signup" className="cta-button">Get Started</a>

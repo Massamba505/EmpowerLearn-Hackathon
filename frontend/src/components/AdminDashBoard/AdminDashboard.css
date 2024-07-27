@@ -1,0 +1,63 @@
+/* AdminDashboard.css */
+
+.admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f6f8fa;
+  }
+  
+  .dashboard-header {
+    background-color: #24292e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .dashboard-content {
+    padding: 20px;
+  }
+  
+  .enrolled-courses, .upcoming-sessions, .notifications {
+    margin-bottom: 40px;
+  }
+  
+  .enrolled-courses ul, .upcoming-sessions ul, .notifications ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .enrolled-courses li, .upcoming-sessions li, .notifications li {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .progress-bar-container {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 25px;
+    width: 100%;
+  }
+  
+  .progress-bar {
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  
+  .notifications li {
+    border-left: 5px solid #28a745;
+    padding-left: 15px;
+  }
+  
+  .notifications p {
+    margin: 5px 0;
+  }
+  
