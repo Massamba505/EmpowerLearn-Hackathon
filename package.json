@@ -9,8 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "concurrently": "^8.2.2"
-  }
+  "description": ""
 }
