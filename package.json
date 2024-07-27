@@ -1,0 +1,16 @@
+{
+  "name": "empowerlearn-hackathon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "cd frontend && npm run build && cd ..",
+    "start": "node backend/bin/www"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
