@@ -7,11 +7,12 @@ import Dashboard from './components/Dashboard/Dashboard';
 import CoursePage from './components/CoursePage/CoursePage';
 import CommunityPage from './components/CommunityPage/CommunityPage';
 import AdminDashboard from './components/AdminDashBoard/AdminDashboard';
+import WelcomePage from './components/WelcomePage/WelcomePage';
 
 const App = () => {
   return (
     <div className="App">
-      <AdminDashboard />
+      <WelcomePage />
     </div>
   );
 };
