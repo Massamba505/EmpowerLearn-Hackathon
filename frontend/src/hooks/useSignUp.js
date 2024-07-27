@@ -8,8 +8,8 @@ export const useSignUp = () => {
     const { setAuthUser } = useAuthContext();
     const navigator = useNavigate();
 
-    const signup = async ({ name,surname,username,password,confirmPassword,email}) => {
-        if (handleError(name,surname,username,password,confirmPassword,email)) {
+    const signup = async ({ name, surname, password, confirmPassword, email}) => {
+        if (handleError(name,surname,password,confirmPassword,email)) {
             return;
         }
         setLoading(true);
@@ -19,12 +19,13 @@ export const useSignUp = () => {
                     "Content-Type": "application/json"
                 },
                 method: "POST",
-                body: JSON.stringify({name,surname,username,password,confirmPassword,email})
+                body: JSON.stringify({name,surname,password,confirmPassword,email})
             });
             const data = await res.json();
             if (data.error) {
                 throw new Error(data.error);
             }
+            
             localStorage.setItem("EmpowerLearn", JSON.stringify(data));
             setAuthUser(data);
 
@@ -38,8 +39,8 @@ export const useSignUp = () => {
     return { loading, signup };
 }
 
-function handleError(name,surname,username,password,confirmPassword,email) {
-    if (!name || !surname || !username || !password || !confirmPassword || !email) {
+function handleError(name,surname,password,confirmPassword,email) {
+    if (!name || !surname || !password || !confirmPassword || !email) {
         toast.error("Please enter all your credentials");
         return true;
     }

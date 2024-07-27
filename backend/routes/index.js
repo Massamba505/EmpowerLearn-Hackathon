@@ -7,7 +7,7 @@ router.get('/hello', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-  res.sendFile(express.static(path.resolve(__dirname, '../../frontend/dist',"index.html")));
+  res.sendFile(express.static(path.resolve(__dirname, '../../frontend',"index.html")));
 });
 
 module.exports = router;

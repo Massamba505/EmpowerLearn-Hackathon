@@ -1,7 +1,19 @@
 import React from 'react';
 import './WelcomePage.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
 
 const WelcomePage = () => {
+
+  const navigate = useNavigate(); // Use the navigate hook
+
+  const handleLoginClick = () => {
+    navigate('/login'); // Programmatically navigate to the login page
+  };
+  const handleSignupClick = () => {
+    navigate('/signup'); // Programmatically navigate to the login page
+  };
+
+
   return (
     <div className="welcome-page">
       <header className="header">
@@ -13,8 +25,8 @@ const WelcomePage = () => {
           <p>Join us to access quality education, personalized learning, and community support.</p>
         </section>
         <section className="auth-options">
-          <button className="login-button" onClick={() => window.location.href='/login'}>Login</button>
-          <button className="signup-button" onClick={() => window.location.href='/signup'}>Sign Up</button>
+          <button className="login-button" onClick={handleLoginClick}>Login</button>
+          <button className="signup-button" onClick={handleSignupClick}>Sign Up</button>
         </section>
       </main>
       <footer className="footer">

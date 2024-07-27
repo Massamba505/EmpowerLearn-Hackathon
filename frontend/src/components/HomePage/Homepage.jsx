@@ -1,5 +1,5 @@
-import React from 'react';
-import './HomePage.css'; // Import the CSS file for styling
+// import React from 'react';
+import './Homepage.css'; // Import the CSS file for styling
 import heroImage from '../../assets/Images/home.jpg'; // Add your image path
 import featureImage1 from '../../assets/Images/live.jpg'; // Add your image path
 import featureImage2 from '../../assets/Images/interactive.jpg'; // Add your image path

@@ -1,30 +1,54 @@
-import React, { useState } from 'react';
-import './SignUp.css'; // Import the CSS file for styling
+import { useState } from 'react';
+import './Signup.css'; // Import the CSS file for styling
+import { useSignUp } from '../../hooks/useSignUp';
 
 const SignUp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formValues, setFormValues] = useState({
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  });
 
-  const handleSignUp = (e) => {
+  const { signup } = useSignUp();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your sign-up logic here
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
+    await signup(formValues);
   };
 
   return (
     <div className="signup-container">
       <h2>Sign Up</h2>
-      <form onSubmit={handleSignUp}>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input
             type="text"
             id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            value={formValues.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="surname">Surname:</label>
+          <input
+            type="text"
+            id="surname"
+            name="surname"
+            value={formValues.surname}
+            onChange={handleChange}
             required
           />
         </div>
@@ -33,8 +57,9 @@ const SignUp = () => {
           <input
             type="email"
             id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formValues.email}
+            onChange={handleChange}
             required
           />
         </div>
@@ -43,8 +68,20 @@ const SignUp = () => {
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={formValues.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={formValues.confirmPassword}
+            onChange={handleChange}
             required
           />
         </div>

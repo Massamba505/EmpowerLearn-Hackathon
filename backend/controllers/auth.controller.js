@@ -4,8 +4,8 @@ const genrateTokenAndSetCookie = require("../utils/generateToken");
 
 const login = async(req,res) =>{
     try {
-        const {username,password} = req.body;
-        const findUser = await User.findOne({username});
+        const {email,password} = req.body;
+        const findUser = await User.findOne({email});
 
         const isPasswordCorrect = await bcrypt.compare(password,findUser?.password || "");
         if(!findUser || !isPasswordCorrect){
@@ -17,7 +17,7 @@ const login = async(req,res) =>{
         res.status(201).json({
             _id:findUser._id,
             fullname:findUser.fullname,
-            username:findUser.username,
+            email:findUser.email,
         });
 
     } catch (error) {
@@ -28,8 +28,8 @@ const login = async(req,res) =>{
 
 const signup = async (req,res) =>{
     try {
-        const {name,surname,username,password,confirmPassword,email} = req.body;
-        if(!name || !surname || !username || !password || !confirmPassword || !email){
+        const {name,surname,password,confirmPassword,email} = req.body;
+        if(!name || !surname || !password || !confirmPassword || !email){
             return res.status(400).json({error:"all details are required"});
         }
 
@@ -37,7 +37,7 @@ const signup = async (req,res) =>{
             return res.status(400).json({error:"password's do not match"});
         }
 
-        const user = await User.findOne({username});
+        const user = await User.findOne({email});
         if(user){
             return res.status(400).json({error:"username already exists"});
         }
@@ -47,9 +47,8 @@ const signup = async (req,res) =>{
 
         const newUser = new User({
             fullname:`${name} ${surname}`,
-            username,
             password:hashedPassword,
-            role,
+            role:"Student",
             email
         });
 
@@ -61,7 +60,7 @@ const signup = async (req,res) =>{
             res.status(201).json({
                 _id:newUser._id,
                 fullname:newUser.fullname,
-                username:newUser.username,
+                email:newUser.email,
             });
         }
         else{
