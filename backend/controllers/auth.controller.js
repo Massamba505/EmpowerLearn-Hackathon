@@ -18,7 +18,6 @@ const login = async(req,res) =>{
             _id:findUser._id,
             fullname:findUser.fullname,
             username:findUser.username,
-            profilePic:findUser.profilePic
         });
 
     } catch (error) {
@@ -29,7 +28,11 @@ const login = async(req,res) =>{
 
 const signup = async (req,res) =>{
     try {
-        const {fullname,username,password,confirmPassword} = req.body;
+        const {name,surname,username,password,confirmPassword,email} = req.body;
+        if(!name || !surname || !username || !password || !confirmPassword || !email){
+            return res.status(400).json({error:"all details are required"});
+        }
+
         if(password !== confirmPassword){
             return res.status(400).json({error:"password's do not match"});
         }
@@ -42,19 +45,15 @@ const signup = async (req,res) =>{
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password,salt);
 
-        const newgender = gender == "male"? "boy":"girl";
-        const profilePic = `https://avatar.iran.liara.run/public/${newgender}?username=${username}`;
-
         const newUser = new User({
-            fullname,
+            fullname:`${name} ${surname}`,
             username,
             password:hashedPassword,
-            gender,
-            profilePic
+            role,
+            email
         });
 
         if(newUser){
-            // Generate JWT token here
             genrateTokenAndSetCookie(newUser._id,res);
 
             await newUser.save();
@@ -63,7 +62,6 @@ const signup = async (req,res) =>{
                 _id:newUser._id,
                 fullname:newUser.fullname,
                 username:newUser.username,
-                profilePic:newUser.profilePic
             });
         }
         else{

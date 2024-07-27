@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+    fullname: { 
+        type: String, 
+        unique: true,
+        required:true
+    },
     username: { 
         type: String, 
         unique: true
@@ -15,15 +20,12 @@ const userSchema = new mongoose.Schema({
     },
     role: { 
         type: String, 
-        enum: ['Student', 'Tutor', 'Admin'], 
+        enum: ['Student', 'Tutor', 'Admin'],
         required: true
     },
     googleId: { 
         type: String, unique: true, sparse: true
     }, // Google ID for OAuth
-    googleAccessToken: { 
-        type: String
-    }, // Optional, can store access token if needed
 },{timestamps:true});
 
 

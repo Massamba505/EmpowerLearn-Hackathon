@@ -17,8 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.resolve(__dirname, '../frontend/dist')));
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/users', usersRouter);
+app.use('/api', indexRouter);
+app.use('api/auth', authRouter);
+app.use('/api/users', usersRouter);
 
 module.exports = app;
