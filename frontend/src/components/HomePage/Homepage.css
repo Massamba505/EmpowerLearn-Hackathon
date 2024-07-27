@@ -3,20 +3,20 @@
   color: #333;
   margin: 0;
   padding: 0;
-  min-height: 100vh; /* Ensure the height covers the viewport */
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
 .header {
   background-color: #4CAF50;
   color: white;
-  padding: 20px; /* Reduced padding for header */
+  padding: 20px;
   text-align: center;
-  position: relative; /* Position relative for banner image positioning */
+  position: relative;
 }
 
 .header h1 {
-  font-size: 2em; /* Smaller font size for header */
+  font-size: 2em;
   margin: 0;
 }
 
@@ -27,9 +27,9 @@
 .nav a {
   color: white;
   text-decoration: none;
-  margin: 0 10px; /* Reduced spacing between links */
+  margin: 0 10px;
   font-weight: bold;
-  font-size: 0.9em; /* Smaller font size for navigation links */
+  font-size: 0.9em;
 }
 
 .nav a:hover {
@@ -37,13 +37,13 @@
 }
 
 .banner-image {
-  width: 100%; /* Full width banner image */
+  width: 100%;
   height: auto;
   margin-top: 20px;
 }
 
 .main {
-  padding: 40px; /* Keep padding for main content */
+  padding: 40px;
 }
 
 .hero {
@@ -52,8 +52,8 @@
 }
 
 .hero-image {
-  width: 20%; /* Adjusted width for hero image */
-  max-width: 800px; /* Maximum width to control size on large screens */
+  width: 20%;
+  max-width: 800px;
   height: auto;
   margin-bottom: 20px;
 }
@@ -104,10 +104,10 @@
 }
 
 .feature-image {
-  width: 100%; /* Full width for feature images */
+  width: 100%;
   height: auto;
-  border-radius: 10px; /* Rounded corners for images */
-  margin-bottom: 15px; /* Space between image and text */
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .feature-card h3 {
@@ -127,15 +127,15 @@
 .footer {
   background-color: #4CAF50;
   color: white;
-  padding: 10px; /* Reduced padding for footer */
+  padding: 10px;
   text-align: center;
 }
 
 .footer-nav a {
   color: white;
   text-decoration: none;
-  margin: 0 10px; /* Reduced spacing between links */
-  font-size: 0.9em; /* Smaller font size for footer links */
+  margin: 0 10px;
+  font-size: 0.9em;
 }
 
 .footer-nav a:hover {
