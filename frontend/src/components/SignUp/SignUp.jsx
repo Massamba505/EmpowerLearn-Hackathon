@@ -1,21 +1,33 @@
 import React, { useState } from 'react';
-import './Login.css'; // Import the CSS file for styling
+import './SignUp.css'; // Import the CSS file for styling
 
-const Login = () => {
+const SignUp = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
-    // Add your login logic here
+    // Add your sign-up logic here
+    console.log('Name:', name);
     console.log('Email:', email);
     console.log('Password:', password);
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
+    <div className="signup-container">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSignUp}>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
@@ -36,10 +48,10 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Sign Up</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
