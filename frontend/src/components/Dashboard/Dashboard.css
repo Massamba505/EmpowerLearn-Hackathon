@@ -1,0 +1,105 @@
+.dashboard {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Ensure the height covers the viewport */
+    box-sizing: border-box;
+  }
+  
+  .header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  .nav {
+    margin-top: 10px;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  
+  .nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .main {
+    padding: 40px;
+  }
+  
+  .courses, .progress, .sessions, .notifications {
+    margin-bottom: 60px;
+  }
+  
+  .courses h2, .progress h2, .sessions h2, .notifications h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+  
+  .course-card, .session-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .view-button, .join-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .view-button:hover, .join-button:hover {
+    background-color: #45a049;
+  }
+  
+  .progress-bar {
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+  }
+  
+  .progress-bar progress {
+    width: 100%;
+    height: 20px;
+  }
+  
+  .notifications ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .notifications li {
+    margin-bottom: 10px;
+  }
+  
+  .footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
