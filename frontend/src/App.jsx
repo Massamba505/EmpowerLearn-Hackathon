@@ -1,12 +1,15 @@
-import './App.css'
+import React from 'react';
+import HomePage from './components/HomePage/Homepage';
+import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
+import LiveTutoringPage from './components/LiveTutorial/LiveTutorial';
 
-function App() {
-
+const App = () => {
   return (
-    <>
-    Hello
-    </>
-  )
-}
+    <div className="App">
+      <HomePage />
+    </div>
+  );
+};
 
-export default App
+export default App;
