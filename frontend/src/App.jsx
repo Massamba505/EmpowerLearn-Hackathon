@@ -6,11 +6,12 @@ import LiveTutoringPage from './components/LiveTutorial/LiveTutorial';
 import Dashboard from './components/Dashboard/Dashboard';
 import CoursePage from './components/CoursePage/CoursePage';
 import CommunityPage from './components/CommunityPage/CommunityPage';
+import AdminDashboard from './components/AdminDashBoard/AdminDashboard';
 
 const App = () => {
   return (
     <div className="App">
-      <CoursePage />
+      <AdminDashboard />
     </div>
   );
 };
