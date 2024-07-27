@@ -1,0 +1,143 @@
+.homepage {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ensure the height covers the viewport */
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px; /* Reduced padding for header */
+  text-align: center;
+  position: relative; /* Position relative for banner image positioning */
+}
+
+.header h1 {
+  font-size: 2em; /* Smaller font size for header */
+  margin: 0;
+}
+
+.nav {
+  margin-top: 10px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px; /* Reduced spacing between links */
+  font-weight: bold;
+  font-size: 0.9em; /* Smaller font size for navigation links */
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.banner-image {
+  width: 100%; /* Full width banner image */
+  height: auto;
+  margin-top: 20px;
+}
+
+.main {
+  padding: 40px; /* Keep padding for main content */
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero-image {
+  width: 20%; /* Adjusted width for hero image */
+  max-width: 800px; /* Maximum width to control size on large screens */
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.hero h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px 40px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 1.2em;
+}
+
+.cta-button:hover {
+  background-color: #45a049;
+}
+
+.features {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.features h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.feature-card {
+  display: inline-block;
+  width: 300px;
+  margin: 30px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: left;
+}
+
+.feature-image {
+  width: 100%; /* Full width for feature images */
+  height: auto;
+  border-radius: 10px; /* Rounded corners for images */
+  margin-bottom: 15px; /* Space between image and text */
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+.feature-card p {
+  font-size: 1.2em;
+}
+
+.about {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.footer {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px; /* Reduced padding for footer */
+  text-align: center;
+}
+
+.footer-nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px; /* Reduced spacing between links */
+  font-size: 0.9em; /* Smaller font size for footer links */
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
