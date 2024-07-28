@@ -1,0 +1,185 @@
+/* Global styles */
+body {
+    background: linear-gradient(to right, #4b79a1, #283e51);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Container for course cards */
+.course-container {
+    text-align: center;
+    padding: 40px;
+}
+
+/* Header styling */
+header {
+    margin: 20px 0;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.2em;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+/* Course list styling */
+.course-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Individual course card styling */
+.course-card {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 280px;
+    height: 380px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.course-card h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.course-card p {
+    margin: 0 0 5px 0; /* Further reduced margin */
+    color: #777;
+    flex-grow: 1;
+    font-size: 1em;
+}
+
+.course-card button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1em;
+}
+
+.course-card button:hover {
+    background-color: #218838;
+}
+
+/* Quiz component styling */
+.app {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.app h1 {
+    font-size: 2em;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.quiz {
+    padding: 20px 0;
+}
+
+.quiz h2 {
+    font-size: 1.5em;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: #f8f9fa;
+    color: #333;
+    font-weight: 500;
+    width: 100%;
+    border: 2px solid #333;
+    padding: 12px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+.correct {
+    background: #4CAF50 !important;
+    color: #fff;
+}
+
+.wrong {
+    background: #f44336 !important;
+    color: #fff;
+}
+
+.next-btn, .refresh-btn {
+    background: #007bff;
+    color: #fff;
+    font-weight: 500;
+    width: 180px;
+    border: 0;
+    padding: 12px;
+    margin: 20px auto 0;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.next-btn:hover, .refresh-btn:hover {
+    background: #0056b3;
+}
+
+.refresh-btn {
+    background: #ff9800;
+}
+
+.refresh-btn:hover {
+    background: #e68900;
+}
+
+.hide {
+    display: none;
+}
+
+.score-section {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}

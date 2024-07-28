@@ -1,0 +1,114 @@
+/* Global styles */
+body {
+    background: linear-gradient(to right, #7da7eb, #5a85d1);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Container for the app */
+.app {
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* App header styling */
+.app h1 {
+    font-size: 30px;
+    color: #001e4d;
+    font-weight: 700;
+    border-bottom: 2px solid #001e4d;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Quiz section styling */
+.quiz {
+    padding: 20px 0;
+}
+
+/* Quiz question styling */
+.quiz h2 {
+    font-size: 20px;
+    color: #001e4d;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.btn {
+    background: #f8f9fa;
+    color: #222;
+    font-weight: 600;
+    width: 100%;
+    border: 2px solid #222;
+    padding: 12px;
+    margin: 10px 0;
+    text-align: left;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background: #222;
+    color: #fff;
+}
+
+/* Correct and wrong answer styling */
+.correct {
+    background: #4CAF50 !important;
+    color: #fff;
+}
+
+.wrong {
+    background: #f44336 !important;
+    color: #fff;
+}
+
+/* Next and refresh button styling */
+.next-btn, .refresh-btn {
+    background: #001e4d;
+    color: #fff;
+    font-weight: 600;
+    width: 160px;
+    border: 0;
+    padding: 12px;
+    margin: 20px auto 0;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.next-btn:hover, .refresh-btn:hover {
+    background: #0056b3;
+}
+
+.refresh-btn {
+    background: #ff9800;
+}
+
+.refresh-btn:hover {
+    background: #e68900;
+}
+
+/* Hidden elements */
+.hide {
+    display: none;
+}
+
+/* Score section styling */
+.score-section {
+    font-size: 20px;
+    color: #001e4d;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}
