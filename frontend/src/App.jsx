@@ -17,6 +17,9 @@ import CreateForumPage from './components/CreateForumPage/CreateForumPage';
 import AskQuestionPage from './components/AskQuestionPage/AskQuestionPage';
 import ForumPage from './components/ForumPage/ForumPage';
 import BlobListPage from './components/BlobList/BlobListPage';
+import VideoUploadPage from './components/VideoUpload/VideoUpload';
+import LectureHomePage from './components/lecture/LectureHome';
+import FileUploadPage from './components/VideoUpload/VideoUpload';
 
 const App = () => {
   return (
@@ -32,6 +35,11 @@ const App = () => {
         <Route path="/create-forum/" element={<CreateForumPage/>}/>
         <Route path="/ask-question/" element={<AskQuestionPage/>}/>
         <Route path="/uploaded-videos" element={<BlobListPage />} />
+        <Route path="/lecture-upload" element={<VideoUploadPage />} />
+        <Route path="/lecture" element={<LectureHomePage />} />
+        <Route path="/up" element={<FileUploadPage />} />
+        
+        
         {/* Protected routes */}
         <Route path="/home" element={<Auth element={<HomePage />} requiresAuth={true} />} />
         <Route path="/live-tutoring" element={<Auth element={<LiveTutoringPage />} requiresAuth={true} />} />

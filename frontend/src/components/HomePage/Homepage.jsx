@@ -56,8 +56,8 @@ const HomePage = () => {
             onMouseLeave={handleMouseLeave}
           >
             <img src={featureImage1} alt="Uploaded Video" style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
-            <h3>Uploaded Video</h3>
-            <p>Browse through our collection of uploaded educational videos.</p>
+            <h3>Uploaded resources</h3>
+            <p>Browse through our collection of uploaded educational resources.</p>
           </div>
           <div
             style={{

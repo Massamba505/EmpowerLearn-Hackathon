@@ -1,0 +1,211 @@
+.homepage {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  .header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .header h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  .nav {
+    margin-top: 10px;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  
+  .nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .banner-image {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  .main {
+    padding: 40px;
+  }
+  
+  .hero {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .hero-image {
+    width: 20%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .hero h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 40px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+  }
+  
+  .cta-button:hover {
+    background-color: #45a049;
+  }
+  
+  .features {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .features h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+  
+  .feature-card {
+    display: inline-block;
+    width: 300px;
+    margin: 30px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: left;
+  }
+  
+  .feature-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .feature-card h3 {
+    margin-top: 0;
+    font-size: 1.8em;
+  }
+  
+  .feature-card p {
+    font-size: 1.2em;
+  }
+  
+  .about {
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .footer-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9em;
+  }
+  
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+  /* Add your existing CSS styles here */
+  
+  /* Styling for the videos section */
+  .videos {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .videos h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .blob-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .blob-list li {
+    margin-bottom: 10px;
+  }
+  
+  .blob-list a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .blob-list a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Additional styling for feature cards */
+  .feature-card {
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .feature-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .feature-card h3 {
+    margin-top: 10px;
+    color: #333;
+  }
+  
+  .feature-card p {
+    color: #666;
+  }
+  

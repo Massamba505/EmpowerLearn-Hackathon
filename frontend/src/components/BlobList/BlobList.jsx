@@ -1,10 +1,11 @@
 // BlobList.js
 import React, { useEffect, useState } from 'react';
 import { BlobServiceClient } from '@azure/storage-blob';
-
+import './BlobListPage.css';
 
 const BlobList = ({ refreshTrigger }) => {
-  const [blobs, setBlobs] = useState([]);
+  const [pdfBlobs, setPdfBlobs] = useState([]);
+  const [videoBlobs, setVideoBlobs] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -18,12 +19,18 @@ const BlobList = ({ refreshTrigger }) => {
       const blobServiceClient = new BlobServiceClient(sasUrl);
       const containerClient = blobServiceClient.getContainerClient('ritanzwe');
 
-      const blobsList = [];
+      const pdfs = [];
+      const videos = [];
       for await (const blob of containerClient.listBlobsFlat()) {
-        blobsList.push(blob.name);
+        if (blob.name.endsWith('.pdf')) {
+          pdfs.push(blob.name);
+        } else if (blob.name.endsWith('.mp4')) {
+          videos.push(blob.name);
+        }
       }
 
-      setBlobs(blobsList);
+      setPdfBlobs(pdfs);
+      setVideoBlobs(videos);
     } catch (err) {
       console.error('Error fetching blobs:', err);
       setError('Error fetching blobs');
@@ -37,22 +44,36 @@ const BlobList = ({ refreshTrigger }) => {
   }, [refreshTrigger]);
 
   return (
-    <div className="blob-list">
-      <h2>Uploaded Videos</h2>
-      <button onClick={fetchBlobs} disabled={loading}>
+    <div className="blob-list-page">
+      <button className="refresh-button" onClick={fetchBlobs} disabled={loading}>
         {loading ? 'Refreshing...' : 'Refresh'}
       </button>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      <ul>
-        {blobs.map((blob, index) => (
-          <li key={index}>
-            <a href={`https://ritanzwe.blob.core.windows.net/ritanzwe/${blob}`} target="_blank" rel="noopener noreferrer">
-              {blob}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="blob-list-section">
+        <h3>Uploaded Videos</h3>
+        <ul>
+          {videoBlobs.map((blob, index) => (
+            <li key={index}>
+              <a href={`https://ritanzwe.blob.core.windows.net/ritanzwe/${blob}`} target="_blank" rel="noopener noreferrer">
+                {blob}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="blob-list-section">
+        <h3>Uploaded PDFs</h3>
+        <ul>
+          {pdfBlobs.map((blob, index) => (
+            <li key={index}>
+              <a href={`https://ritanzwe.blob.core.windows.net/ritanzwe/${blob}`} target="_blank" rel="noopener noreferrer">
+                {blob}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
