@@ -4,9 +4,12 @@ import heroImage from '../../assets/Images/home.jpg'; // Add your image path
 import featureImage1 from '../../assets/Images/live.jpg'; // Add your image path
 import featureImage2 from '../../assets/Images/interactive.jpg'; // Add your image path
 import featureImage3 from '../../assets/Images/comm.jpg'; // Add your image path
-import bannerImage from '../../assets/Images/comm.jpg'; // Add your image path
+// import bannerImage from '../../assets/Images/comm.jpg'; // Add your image path
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigator = useNavigate();
+
   return (
     <div className="homepage">
       <header className="header">
@@ -22,21 +25,21 @@ const HomePage = () => {
           <img src={heroImage} alt="Hero" className="hero-image" />
           <h2>Empowering Education for Underprivileged Communities</h2>
           <p>Providing access to quality education, personalized learning, and community support.</p>
-          <a href="#signup" className="cta-button">Get Started</a>
+          <a href="#features" className="cta-button">Get Started</a>
         </section>
         <section id="features" className="features">
           <h2>Our Features</h2>
-          <div className="feature-card">
+          <div className="feature-card" onClick = {()=>navigator("/live-tutoring")}>
             <img src={featureImage1} alt="Live Tutoring" className="feature-image" />
             <h3>Live Tutoring</h3>
             <p>Connect with skilled educators for live sessions.</p>
           </div>
-          <div className="feature-card">
+          <div className="feature-card" onClick = {()=>navigator("/live-tutoring")}>
             <img src={featureImage2} alt="Interactive Content" className="feature-image" />
             <h3>Interactive Content</h3>
             <p>Engaging multimedia content to enhance learning.</p>
           </div>
-          <div className="feature-card">
+          <div className="feature-card"  onClick = {()=>navigator("/community-page")}>
             <img src={featureImage3} alt="Community Support" className="feature-image" />
             <h3>Community Support</h3>
             <p>Join forums and connect with fellow learners.</p>
