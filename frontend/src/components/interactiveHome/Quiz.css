@@ -1,23 +1,46 @@
 /* Global styles */
 body {
-    background: linear-gradient(to right, #7da7eb, #5a85d1);
+    /* background: linear-gradient(to right, #7da7eb, #5a85d1); */
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
+.Loading{
+    background: linear-gradient(to right, #4b79a1, #283e51);
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+}
+.ppp h1{
+    color: white;
+}
+
+.ppp{
+    padding-top: 1em;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to right, #4b79a1, #283e51);
+}
 /* Container for the app */
-.app {
-    background: #fff;
+.app2 {
+    background-color: white;
     width: 90%;
     max-width: 600px;
-    margin: 100px auto 0;
+    /* margin: 100px auto 0; */
     border-radius: 15px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* App header styling */
-.app h1 {
+.app2 h1 {
     font-size: 30px;
     color: #001e4d;
     font-weight: 700;

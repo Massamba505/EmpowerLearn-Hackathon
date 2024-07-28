@@ -27,7 +27,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup-container">
+    <div style={{display:'flex', justifyContent:"center", alignItems:"center", height:"100vh"}}>
+    <div className="signup-container" >
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -87,6 +88,7 @@ const SignUp = () => {
         </div>
         <button type="submit">Sign Up</button>
       </form>
+    </div>
     </div>
   );
 };
