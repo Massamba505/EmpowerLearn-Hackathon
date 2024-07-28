@@ -13,6 +13,7 @@ import CourseCard from './components/interactiveHome/interactiveHome';
 import Auth from './components/Auth';
 import { Toaster } from 'react-hot-toast';
 import VideoChat from './components/VideoChat/VideoChat';
+import BlobListPage from './components/BlobList/BlobListPage';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/live-tutoring" element={<VideoChat />} />
         <Route path="/CourseCard" element={<CourseCard />} />
+        <Route path="/uploaded-videos" element={<BlobListPage />} />
         {/* Protected routes */}
         <Route path="/home" element={<Auth element={<HomePage />} requiresAuth={true} />} />
         <Route path="/live-tutoring" element={<Auth element={<LiveTutoringPage />} requiresAuth={true} />} />

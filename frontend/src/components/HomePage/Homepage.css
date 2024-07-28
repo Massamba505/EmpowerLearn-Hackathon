@@ -141,3 +141,70 @@
 .footer-nav a:hover {
   text-decoration: underline;
 }
+/* Add your existing CSS styles here */
+
+/* Styling for the videos section */
+.videos {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.videos h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.blob-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.blob-list li {
+  margin-bottom: 10px;
+}
+
+.blob-list a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.blob-list a:hover {
+  text-decoration: underline;
+}
+
+/* Additional styling for feature cards */
+.feature-card {
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.feature-card h3 {
+  margin-top: 10px;
+  color: #333;
+}
+
+.feature-card p {
+  color: #666;
+}

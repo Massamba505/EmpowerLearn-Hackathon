@@ -51,6 +51,26 @@ const HomePage = () => {
               boxShadow: hoveredCard === 'card1' ? '0 4px 8px rgba(0, 0, 0, 0.2)' : 'none'
             }}
             className="feature-card"
+            onClick={() => handleNavigation('/uploaded-videos')}
+            onMouseEnter={() => handleMouseEnter('card1')}
+            onMouseLeave={handleMouseLeave}
+          >
+            <img src={featureImage1} alt="Uploaded Video" style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
+            <h3>Uploaded Video</h3>
+            <p>Browse through our collection of uploaded educational videos.</p>
+          </div>
+          <div
+            style={{
+              cursor: 'pointer',
+              display: 'inline-block',
+              padding: '20px',
+              border: '1px solid #ddd',
+              borderRadius: '8px',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              transform: hoveredCard === 'card2' ? 'scale(1.05)' : 'scale(1)',
+              boxShadow: hoveredCard === 'card2' ? '0 4px 8px rgba(0, 0, 0, 0.2)' : 'none'
+            }}
+            className="feature-card"
             onClick={() => handleNavigation('/live-tutoring')}
             onMouseEnter={() => handleMouseEnter('card1')}
             onMouseLeave={handleMouseLeave}
