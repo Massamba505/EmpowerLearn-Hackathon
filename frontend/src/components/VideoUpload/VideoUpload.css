@@ -1,35 +1,60 @@
-/* VideoUploadPage.css */
-.video-upload-page {
-    padding: 20px;
+/* VideoUpload.css */
+.file-upload {
+    padding: 40px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 40px auto;
     font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
   }
   
-  .video-upload {
-    padding: 20px;
+  .file-upload h2 {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+  }
+  
+  .file-upload input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: #f9f9f9;
   }
   
-  .video-upload h2 {
-    text-align: center;
+  .file-upload button {
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
   }
   
-  .video-upload input[type="file"] {
-    display: block;
-    margin: 20px auto;
+  .file-upload button:hover {
+    background-color: #0056b3;
   }
   
-  .video-upload button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
+  .file-upload button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
   
-  .video-upload p {
-    text-align: center;
+  .file-upload p {
+    margin-top: 20px;
     color: #333;
+    font-size: 16px;
+  }
+  
+  .message-success {
+    color: green;
+  }
+  
+  .message-error {
+    color: red;
   }
   
