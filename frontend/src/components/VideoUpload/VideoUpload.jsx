@@ -1,9 +1,9 @@
-// VideoUploadPage.jsx
+// FileUploadPage.jsx
 import React, { useState } from 'react';
 import { BlobServiceClient } from '@azure/storage-blob';
 import './VideoUpload.css';
 
-const VideoUpload = ({ onUploadSuccess }) => {
+const FileUpload = ({ onUploadSuccess }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState('');
@@ -37,27 +37,27 @@ const VideoUpload = ({ onUploadSuccess }) => {
   };
 
   return (
-    <div className="video-upload">
-      <h2>Upload a Video</h2>
-      <input type="file" accept="video/*" onChange={handleFileChange} />
+    <div className="file-upload">
+      <h2>Upload a File</h2>
+      <input type="file" accept="video/*,application/pdf" onChange={handleFileChange} />
       <button onClick={handleUpload} disabled={uploading}>
         {uploading ? 'Uploading...' : 'Upload'}
       </button>
-      {message && <p>{message}</p>}
+      {message && <p className={message.includes('successfully') ? 'message-success' : 'message-error'}>{message}</p>}
     </div>
   );
 };
 
-const VideoUploadPage = () => {
+const FileUploadPage = () => {
   const handleUploadSuccess = () => {
     console.log('File uploaded successfully!');
   };
 
   return (
-    <div className="video-upload-page">
-      <VideoUpload onUploadSuccess={handleUploadSuccess} />
+    <div className="file-upload-page">
+      <FileUpload onUploadSuccess={handleUploadSuccess} />
     </div>
   );
 };
 
-export default VideoUploadPage;
+export default FileUploadPage;
