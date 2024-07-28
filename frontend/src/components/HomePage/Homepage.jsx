@@ -75,7 +75,7 @@ const HomePage = () => {
             onMouseEnter={() => handleMouseEnter('card1')}
             onMouseLeave={handleMouseLeave}
           >
-            <img src={featureImage1} alt="Live Tutoring" style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
+            <img src={heroImage} alt="Live Tutoring" style={{ width: '100%', height: 'auto', borderRadius: '4px' }} />
             <h3>Live Tutoring</h3>
             <p>Connect with skilled educators for live sessions.</p>
           </div>

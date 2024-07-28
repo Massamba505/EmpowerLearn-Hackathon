@@ -257,7 +257,7 @@ import React, { useEffect } from 'react';
 
 const VideoChat = () => {
   useEffect(() => {
-    window.location.href = 'http://localhost:8080/';
+    window.open('http://localhost:8080/','_blank', 'rel=noopener noreferrer')
   }, []);
 
   return (
