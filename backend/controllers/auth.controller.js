@@ -28,8 +28,8 @@ const login = async(req,res) =>{
 
 const signup = async (req, res) => {
     try {
-        await User.collection.drop();
-        console.log("Collection dropped successfully");
+        // await User.collection.drop();
+        // console.log("Collection dropped successfully");
 
         const { name, surname, password, confirmPassword, email } = req.body;
 

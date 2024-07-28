@@ -1,0 +1,65 @@
+/* BlobList.css */
+.blob-list {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.blob-list h2 {
+  text-align: center;
+}
+
+.blob-list button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.card-cover {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-body a {
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.card-body a:hover {
+  text-decoration: underline;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #ff0000;
+}
