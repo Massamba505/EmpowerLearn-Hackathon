@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './ForumPage.css'; // Import the CSS file for styling
+import { useAuthContext } from '../../context/authContext';
 
 const ForumPage = () => {
+  const {authUser}=useAuthContext();
+  //setUsername(authUser);
   const { groupName } = useParams(); // Get groupName from URL parameters
   const [posts, setPosts] = useState([]);
   const [responses, setResponses] = useState({});
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState(authUser.fullname);
   const [message, setMessage] = useState('');
   const [responseMessage, setResponseMessage] = useState('');
   const [activePost, setActivePost] = useState(null);
-
+  
+  //console.log("squeeze");
+  //console.log(authUser);
+  //console.log("theorem");
+  
   useEffect(() => {
     fetch(`/api/forums/${groupName}`)
       .then(response => response.json())
@@ -28,19 +35,21 @@ const ForumPage = () => {
   const handleSubmitPost = (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('message', message);
-    formData.append('group_name', groupName);
-
-    fetch('/api/forums/insert', {
+    console.log(username);
+    console.log(message);
+    console.log(groupName);
+    //this one is for the main POSTS to FORUM_POST
+    fetch('/api/posts', {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username:username, message:message,group_name:groupName }),
     })
       .then(response => response.text())
       .then(data => {
-        alert(data); // Show success message
-        setMessage(''); // Clear the message input
+        alert(data);
+        setMessage(''); 
         fetch(`/api/forums/${groupName}`)
           .then(response => response.json())
           .then(data => setPosts(data))
@@ -61,13 +70,16 @@ const ForumPage = () => {
 
     fetch('/api/responses', {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username:username, message:message,group_name:groupName }),
     })
       .then(response => response.text())
       .then(data => {
-        alert(data); // Show success message
-        setResponseMessage(''); // Clear the response message input
-        fetchResponses(postId); // Refresh responses
+        alert(data); 
+        setResponseMessage(''); 
+        fetchResponses(postId); 
       })
       .catch(error => {
         console.error('Error:', error);
@@ -96,15 +108,7 @@ const ForumPage = () => {
         <section className="new-post">
           <h2>What's on your mind?</h2>
           <form onSubmit={handleSubmitPost}>
-            <div>
-              <label>Username:</label>
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
+            
             <div>
               <label>Message:</label>
               <textarea
@@ -122,8 +126,6 @@ const ForumPage = () => {
             <div key={post.POST_ID} className="post-card">
               <h3>{post.USERNAME}</h3>
               <p>{post.MESSAGE}</p>
-              <p><strong>Answers:</strong> {post.ANSWER_COUNT}</p>
-              <button onClick={() => handlePostClick(post.POST_ID)}>View Responses</button>
               {activePost === post.POST_ID && (
                 <div className="responses">
                   {responses[post.POST_ID] && responses[post.POST_ID].map(response => (
@@ -133,15 +135,7 @@ const ForumPage = () => {
                     </div>
                   ))}
                   <form onSubmit={(e) => handleSubmitResponse(post.POST_ID, e)}>
-                    <div>
-                      <label>Username:</label>
-                      <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                      />
-                    </div>
+                    
                     <div>
                       <label>Message:</label>
                       <textarea
