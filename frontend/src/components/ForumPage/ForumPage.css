@@ -1,0 +1,96 @@
+.forum-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+  }
+  
+  .nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  
+  .main {
+    padding: 20px;
+  }
+  
+  .posts {
+    margin: 20px 0;
+  }
+  
+  .post-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 15px;
+  }
+  
+  .footer {
+    background-color: #f1f1f1;
+    bottom: 0;
+    padding: 10px 0;
+    position: relative;
+    width: 100%;
+  }
+  
+  .add-post-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .add-post-button:hover {
+    background-color: #45a049;
+  }
+  
+  .new-post {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .new-post h2 {
+    margin-top: 0;
+  }
+  
+  .new-post form div {
+    margin-bottom: 10px;
+  }
+  
+  .new-post label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .new-post input[type="text"],
+  .new-post textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .new-post button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .new-post button:hover {
+    background-color: #45a049;
+  }
+  
