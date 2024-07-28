@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Quiz.css';
 
-const Quiz = ({ category, onReturnToCards }) => {
+const Quiz = ({ category, what, onReturnToCards }) => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -55,16 +55,17 @@ const Quiz = ({ category, onReturnToCards }) => {
   };
 
   if (questions.length === 0) {
-    return <div>Loading...</div>;
+    return <div className='Loading'>Loading...</div>;
   }
 
   return (
-    <div className="app">
-      <h1>Simple Quiz</h1>
+    <div className='ppp'>
+    <h1>{what}</h1>
+    <div className="app2">
       {showScore ? (
         <div className="score-section">
           You scored {score} out of {questions.length}
-          <button onClick={handleRestartQuiz} className="next-btn refresh-btn">Refresh Quiz</button>
+          <button onClick={handleRestartQuiz} className="next-btn refresh-btn">Done </button>
         </div>
       ) : (
         <>
@@ -87,6 +88,8 @@ const Quiz = ({ category, onReturnToCards }) => {
           </div>
         </>
       )}
+    </div>
+      
     </div>
   );
 };

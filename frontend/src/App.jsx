@@ -9,12 +9,10 @@ import CoursePage from './components/CoursePage/CoursePage';
 import CommunityPage from './components/CommunityPage/CommunityPage';
 import AdminDashboard from './components/AdminDashBoard/AdminDashboard';
 import WelcomePage from './components/WelcomePage/WelcomePage';
-import VideoUpload from './components/VideoUpload/VideoUpload';
-import interactiveHome from './components/interactiveHome/interactiveHome';
-import BlobListPage from './components/BlobList/BlobListPage';
-
+import CourseCard from './components/interactiveHome/interactiveHome';
 import Auth from './components/Auth';
 import { Toaster } from 'react-hot-toast';
+import VideoChat from './components/VideoChat/VideoChat';
 
 const App = () => {
   return (
@@ -23,7 +21,8 @@ const App = () => {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        {/* <Route path="/interactiveHome" element={<InteractiveHome />} /> */}
+        <Route path="/live-tutoring" element={<VideoChat />} />
+        <Route path="/CourseCard" element={<CourseCard />} />
         {/* Protected routes */}
         <Route path="/home" element={<Auth element={<HomePage />} requiresAuth={true} />} />
         <Route path="/live-tutoring" element={<Auth element={<LiveTutoringPage />} requiresAuth={true} />} />
@@ -31,7 +30,6 @@ const App = () => {
         <Route path="/course-page" element={<Auth element={<CoursePage />} requiresAuth={true} />} />
         <Route path="/community-page" element={<Auth element={<CommunityPage />} requiresAuth={true} />} />
         <Route path="/admin-dashboard" element={<Auth element={<AdminDashboard />} requiresAuth={true} />} />
-        <Route path="/video-upload" element={<Auth element={<VideoUpload />} requiresAuth={true} />} />
       </Routes>
       <Toaster />
     </div>

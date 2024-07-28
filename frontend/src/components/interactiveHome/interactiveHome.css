@@ -1,14 +1,16 @@
 /* Global styles */
-body {
+/* body {
     background: linear-gradient(to right, #4b79a1, #283e51);
     margin: 0;
     font-family: 'Poppins', sans-serif;
-}
+} */
 
 /* Container for course cards */
 .course-container {
     text-align: center;
     padding: 40px;
+    height: 100%;
+    background: linear-gradient(to right, #4b79a1, #283e51);
 }
 
 /* Header styling */
@@ -49,6 +51,7 @@ header p {
     height: 380px;
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
+    cursor: pointer;
     flex-direction: column;
 }
 
@@ -164,9 +167,9 @@ header p {
     background: #0056b3;
 }
 
-.refresh-btn {
+/* .refresh-btn {
     background: #ff9800;
-}
+} */
 
 .refresh-btn:hover {
     background: #e68900;

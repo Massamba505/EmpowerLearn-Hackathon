@@ -32,19 +32,22 @@ const categories = [
 function CourseCard() {
   const [startQuiz, setStartQuiz] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [category, setCategory] = useState('');
 
-  const handleStartQuiz = (category) => {
+  const handleStartQuiz = (category,what) => {
     setSelectedCategory(category);
+    setCategory(what)
     setStartQuiz(true);
   };
 
   const handleReturnToCards = () => {
     setStartQuiz(false);
+    setCategory('');
     setSelectedCategory('');
   };
 
   if (startQuiz) {
-    return <Quiz category={selectedCategory} onReturnToCards={handleReturnToCards} />;
+    return <Quiz category={selectedCategory} what = {category} onReturnToCards={handleReturnToCards} />;
   }
 
   return (
@@ -58,7 +61,7 @@ function CourseCard() {
           <div key={category.id} className="course-card">
             <h3>{category.name}</h3>
             <p>{category.description}</p>
-            <button onClick={() => handleStartQuiz(category.id)}>Start Quiz</button>
+            <button onClick={() => handleStartQuiz(category.id,category.name)}>Start Quiz</button>
           </div>
         ))}
       </div>
