@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     fullname: { 
-        type: String, 
-        unique: true,
-        required:true
+        type: String,
+        required: true
     },
     password: { 
         type: String
@@ -17,12 +16,13 @@ const userSchema = new mongoose.Schema({
     role: { 
         type: String, 
         enum: ['Student', 'Tutor', 'Admin'],
-        required: true
+        default: "Student"
     },
     googleId: { 
-        type: String, unique: true, sparse: true
-    }, // Google ID for OAuth
-},{timestamps:true});
-
+        type: String, 
+        unique: true, 
+        sparse: true
+    }
+}, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);
