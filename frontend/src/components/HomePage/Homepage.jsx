@@ -7,6 +7,7 @@ import featureImage2 from '../../assets/Images/interactive.jpg'; // Add your ima
 import featureImage3 from '../../assets/Images/comm.jpg'; // Add your image path
 import bannerImage from '../../assets/Images/comm.jpg'; // Add your image path
 
+
 const HomePage = () => {
   const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -16,6 +17,7 @@ const HomePage = () => {
 
   const handleNavigation = (path) => {
     navigate(path);
+    
   };
 
   return (
