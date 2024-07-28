@@ -1,4 +1,5 @@
-// import React from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Homepage.css'; // Import the CSS file for styling
 import heroImage from '../../assets/Images/home.jpg'; // Add your image path
 import featureImage1 from '../../assets/Images/live.jpg'; // Add your image path
@@ -7,6 +8,12 @@ import featureImage3 from '../../assets/Images/comm.jpg'; // Add your image path
 import bannerImage from '../../assets/Images/comm.jpg'; // Add your image path
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <div className="homepage">
       <header className="header">
@@ -26,17 +33,17 @@ const HomePage = () => {
         </section>
         <section id="features" className="features">
           <h2>Our Features</h2>
-          <div className="feature-card">
+          <div className="feature-card" onClick={() => handleNavigation('/live-tutoring')}>
             <img src={featureImage1} alt="Live Tutoring" className="feature-image" />
             <h3>Live Tutoring</h3>
             <p>Connect with skilled educators for live sessions.</p>
           </div>
-          <div className="feature-card">
+          <div className="feature-card" onClick={() => handleNavigation('/CourseCard')}>
             <img src={featureImage2} alt="Interactive Content" className="feature-image" />
             <h3>Interactive Content</h3>
             <p>Engaging multimedia content to enhance learning.</p>
           </div>
-          <div className="feature-card">
+          <div className="feature-card" onClick={() => handleNavigation('/community-page')}>
             <img src={featureImage3} alt="Community Support" className="feature-image" />
             <h3>Community Support</h3>
             <p>Join forums and connect with fellow learners.</p>

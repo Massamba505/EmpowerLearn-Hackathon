@@ -3,7 +3,7 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../context/authContext'; // Adjust the path as needed
 
-const Auth = ({ children, requiresAuth = false }) => {
+const Auth = ({ element, requiresAuth = false }) => {
   const { authUser } = useAuthContext();
   const location = useLocation();
 
@@ -18,7 +18,7 @@ const Auth = ({ children, requiresAuth = false }) => {
   // }
 
   // Render the child component if authentication state matches
-  return <>{children}</>;
+  return <>{element}</>;
 };
 
 export default Auth;
