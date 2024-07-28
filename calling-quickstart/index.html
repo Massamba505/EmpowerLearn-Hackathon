@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Communication Services - Calling Web SDK</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2em;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h4 {
+            margin-bottom: 1em;
+            color: #333;
+        }
+        input {
+            padding: 0.5em;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 1em;
+        }
+        button {
+            padding: 0.7em 1.5em;
+            border-radius: 4px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            margin: 0.5em 0.5em 0 0;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #initialize-call-agent {
+            background-color: #0078d4;
+        }
+        #start-call-button, #accept-call-button {
+            background-color: #28a745;
+        }
+        #hangup-call-button, #stop-video-button {
+            background-color: #dc3545;
+        }
+        #start-video-button {
+            background-color: #ffc107;
+        }
+        #connectedLabel {
+            color: #13bb13;
+            margin-top: 1em;
+        }
+        #remoteVideosGallery, #localVideoContainer {
+            margin-top: 1em;
+        }
+        .init{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+        }
+        .init input{
+            padding: 1em;
+        }
+        .disable{
+        display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h4>Live Tutoring</h4>
+        <div class="init">
+            <input id="user-access-token"
+                type="text"
+                placeholder="User access token"/>
+            <button id="initialize-call-agent" type="button">Initialize Call Agent</button>
+        </div>
+            <input id="callee-acs-user-id"
+                type="text"
+                placeholder="Enter callee's user identity in format: '8:acs:resourceId_userId'"/>
+        <div>
+            <button id="start-call-button" class="disable" type="button" disabled>Start Call</button>
+            <button id="hangup-call-button" class="disable" type="button" disabled>Hang up Call</button>
+        </div>
+        <div>
+            <button id="accept-call-button" class="disable" type="button" disabled>Accept Call</button>
+            <button id="start-video-button" class="disable" type="button" disabled>Start Video</button>
+            <button id="stop-video-button" class="disable" type="button" disabled>Stop Video</button>
+        </div>
+        <div id="connectedLabel" hidden>Call is connected!</div>
+        <div id="remoteVideosGallery" hidden>Remot video streams:</div>
+        <div id="localVideoContainer" hidden>Local video stream:</div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>

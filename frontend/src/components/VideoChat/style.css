@@ -1,20 +1,82 @@
-.remote-video-container {
-    position: relative;
-  }
-  .loading-spinner {
-    border: 12px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 12px solid #ca5010;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-  }
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
+/* body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+h4 {
+  margin-bottom: 20px;
+}
+
+.input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.button {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  background-color: #005a9e;
+}
+
+.status {
+  margin: 20px 0;
+  color: green;
+}
+
+.remote-videos,
+.local-video {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.remote-videos video,
+.local-video video {
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #333;
+} */

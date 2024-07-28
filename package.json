@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "install": "cd backend && npm install && cd ../frontend && npm install",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "install": "cd backend && npm install && cd ../frontend && npm install && cd ../calling-quickstart && npm install",
+    "start": "concurrently \"npm run server\" \"npm run client\" \"npm run live\"",
     "server": "cd backend && nodemon ./bin/www",
-    "client": "cd frontend && npm run dev"
+    "client": "cd frontend && npm run dev",
+    "live": "cd calling-quickstart && npm start"
   },
   "keywords": [],
   "author": "",

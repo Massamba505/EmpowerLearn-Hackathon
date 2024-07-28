@@ -1,243 +1,268 @@
-import { useState, useEffect } from 'react';
-import {
-  CallClient,
-  VideoStreamRenderer,
-  LocalVideoStream,
-} from '@azure/communication-calling';
-import { AzureCommunicationTokenCredential } from '@azure/communication-common';
-import { AzureLogger, setLogLevel } from '@azure/logger';
-import './style.css';
+// import React, { useState, useEffect, useRef } from 'react';
+// import {
+//   CallClient,
+//   VideoStreamRenderer,
+//   LocalVideoStream
+// } from '@azure/communication-calling';
+// import { AzureCommunicationTokenCredential } from '@azure/communication-common';
+// import './style.css';
 
-const API_ENDPOINT = '/api/user/token';
+// const VideoChat = () => {
+//   const [callAgent, setCallAgent] = useState(null);
+//   const [deviceManager, setDeviceManager] = useState(null);
+//   const [call, setCall] = useState(null);
+//   const [incomingCall, setIncomingCall] = useState(null);
+//   const [localVideoStream, setLocalVideoStream] = useState(null);
+//   const [remoteParticipants, setRemoteParticipants] = useState([]);
 
-setLogLevel('verbose');
-AzureLogger.log = (...args) => {
-  console.log(...args);
-};
+//   const localVideoRef = useRef(null);
+//   const remoteVideoRefs = useRef([]);
+
+//   useEffect(() => {
+//     if (callAgent) {
+//       callAgent.on('incomingCall', (args) => {
+//         setIncomingCall(args.incomingCall);
+//         document.getElementById('accept-call-button').disabled = false;
+//         document.getElementById('start-call-button').disabled = true;
+//       });
+//     }
+//   }, [callAgent]);
+
+//   const handleInitializeCallAgent = async () => {
+//     try {
+//       const callClient = new CallClient();
+//       const tokenCredential = new AzureCommunicationTokenCredential(document.getElementById('user-access-token').value.trim());
+//       const agent = await callClient.createCallAgent(tokenCredential);
+//       setCallAgent(agent);
+
+//       const manager = await callClient.getDeviceManager();
+//       setDeviceManager(manager);
+//       await manager.askDevicePermission({ video: true });
+//       await manager.askDevicePermission({ audio: true });
+
+//       document.getElementById('start-call-button').disabled = false;
+//       document.getElementById('initialize-call-agent').disabled = true;
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   const handleStartCall = async () => {
+//     try {
+//       const stream = await createLocalVideoStream();
+//       const videoOptions = stream ? { localVideoStreams: [stream] } : undefined;
+//       const currentCall = callAgent.startCall([{ communicationUserId: document.getElementById('callee-acs-user-id').value.trim() }], { videoOptions });
+//       setCall(currentCall);
+//       subscribeToCall(currentCall);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   const handleAcceptCall = async () => {
+//     try {
+//       const stream = await createLocalVideoStream();
+//       const videoOptions = stream ? { localVideoStreams: [stream] } : undefined;
+//       const acceptedCall = await incomingCall.accept({ videoOptions });
+//       setCall(acceptedCall);
+//       subscribeToCall(acceptedCall);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
+
+//   const createLocalVideoStream = async () => {
+//     const camera = (await deviceManager.getCameras())[0];
+//     if (camera) {
+//       const localStream = new LocalVideoStream(camera);
+//       setLocalVideoStream(localStream);
+//       await displayLocalVideoStream(localStream);
+//       return localStream;
+//     } else {
+//       console.error('No camera device found on the system');
+//     }
+//   };
+
+//   const displayLocalVideoStream = async (localStream) => {
+//     const renderer = new VideoStreamRenderer(localStream);
+//     const view = await renderer.createView();
+//     localVideoRef.current.appendChild(view.target);
+//     document.getElementById('localVideoContainer').hidden = false;
+//   };
+
+//   const subscribeToCall = (currentCall) => {
+//     currentCall.on('idChanged', () => {
+//       console.log(`Call Id changed: ${currentCall.id}`);
+//     });
+
+//     currentCall.on('stateChanged', () => {
+//       if (currentCall.state === 'Connected') {
+//         document.getElementById('connectedLabel').hidden = false;
+//         document.getElementById('accept-call-button').disabled = true;
+//         document.getElementById('start-call-button').disabled = true;
+//         document.getElementById('hangup-call-button').disabled = false;
+//         document.getElementById('start-video-button').disabled = false;
+//         document.getElementById('stop-video-button').disabled = false;
+//         document.getElementById('remoteVideosGallery').hidden = false;
+//       } else if (currentCall.state === 'Disconnected') {
+//         document.getElementById('connectedLabel').hidden = true;
+//         document.getElementById('start-call-button').disabled = false;
+//         document.getElementById('hangup-call-button').disabled = true;
+//         document.getElementById('start-video-button').disabled = true;
+//         document.getElementById('stop-video-button').disabled = true;
+//       }
+//     });
+
+//     currentCall.localVideoStreams.forEach(async (lvs) => {
+//       setLocalVideoStream(lvs);
+//       await displayLocalVideoStream(lvs);
+//     });
+
+//     currentCall.on('localVideoStreamsUpdated', (e) => {
+//       e.added.forEach(async (lvs) => {
+//         setLocalVideoStream(lvs);
+//         await displayLocalVideoStream(lvs);
+//       });
+//       e.removed.forEach((lvs) => {
+//         removeLocalVideoStream();
+//       });
+//     });
+
+//     currentCall.remoteParticipants.forEach((remoteParticipant) => {
+//       subscribeToRemoteParticipant(remoteParticipant);
+//     });
+
+//     currentCall.on('remoteParticipantsUpdated', (e) => {
+//       e.added.forEach((remoteParticipant) => {
+//         subscribeToRemoteParticipant(remoteParticipant);
+//       });
+//       e.removed.forEach((remoteParticipant) => {
+//         removeRemoteParticipant(remoteParticipant);
+//       });
+//     });
+//   };
+
+//   const subscribeToRemoteParticipant = (remoteParticipant) => {
+//     remoteParticipant.on('stateChanged', () => {
+//       console.log(`Remote participant state changed: ${remoteParticipant.state}`);
+//     });
+
+//     remoteParticipant.videoStreams.forEach((remoteVideoStream) => {
+//       subscribeToRemoteVideoStream(remoteVideoStream, remoteParticipant);
+//     });
+
+//     remoteParticipant.on('videoStreamsUpdated', (e) => {
+//       e.added.forEach((remoteVideoStream) => {
+//         subscribeToRemoteVideoStream(remoteVideoStream, remoteParticipant);
+//       });
+//       e.removed.forEach((remoteVideoStream) => {
+//         removeRemoteVideoStream(remoteVideoStream, remoteParticipant);
+//       });
+//     });
+//   };
+
+//   const subscribeToRemoteVideoStream = async (remoteVideoStream, remoteParticipant) => {
+//     const renderer = new VideoStreamRenderer(remoteVideoStream);
+//     const view = await renderer.createView();
+//     const videoElement = view.target;
+
+//     if (!remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId]) {
+//       remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId] = [];
+//     }
+
+//     remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId].push(videoElement);
+//     document.getElementById('remoteVideosGallery').appendChild(videoElement);
+
+//     remoteVideoStream.on('isAvailableChanged', async () => {
+//       if (remoteVideoStream.isAvailable) {
+//         if (!document.body.contains(videoElement)) {
+//           document.getElementById('remoteVideosGallery').appendChild(videoElement);
+//         }
+//       } else {
+//         document.getElementById('remoteVideosGallery').removeChild(videoElement);
+//       }
+//     });
+//   };
+
+//   const removeLocalVideoStream = () => {
+//     if (localVideoRef.current) {
+//       while (localVideoRef.current.firstChild) {
+//         localVideoRef.current.removeChild(localVideoRef.current.firstChild);
+//       }
+//     }
+//   };
+
+//   const removeRemoteParticipant = (remoteParticipant) => {
+//     if (remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId]) {
+//       remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId].forEach(videoElement => {
+//         document.getElementById('remoteVideosGallery').removeChild(videoElement);
+//       });
+//       delete remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId];
+//     }
+//   };
+
+//   const removeRemoteVideoStream = (remoteVideoStream, remoteParticipant) => {
+//     if (remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId]) {
+//       const videoElements = remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId];
+//       const videoElementToRemove = videoElements.find(videoElement => videoElement.srcObject === remoteVideoStream);
+
+//       if (videoElementToRemove) {
+//         document.getElementById('remoteVideosGallery').removeChild(videoElementToRemove);
+//         remoteVideoRefs.current[remoteParticipant.identifier.communicationUserId] = videoElements.filter(
+//           videoElement => videoElement !== videoElementToRemove
+//         );
+//       }
+//     }
+//   };
+
+//   const handleHangUpCall = async () => {
+//     await call.hangUp();
+//     setCall(null);
+//     setRemoteParticipants([]);
+//     document.getElementById('remoteVideosGallery').hidden = true;
+//     removeLocalVideoStream();
+//   };
+
+//   const handleStartVideo = async () => {
+//     const stream = await createLocalVideoStream();
+//     await call.startVideo(stream);
+//   };
+
+//   const handleStopVideo = async () => {
+//     await call.stopVideo(localVideoStream);
+//     removeLocalVideoStream();
+//   };
+
+//   return (
+//     <div className="app">
+//       <div className="container">
+//         <h4>Azure Communication Services - Calling Web SDK</h4>
+//         <input id="user-access-token" type="text" placeholder="User access token" className="input" />
+//         <button id="initialize-call-agent" onClick={handleInitializeCallAgent} className="button">Initialize Call Agent</button>
+//         <input id="callee-acs-user-id" type="text" placeholder="Callee ACS User ID" className="input" />
+//         <button id="start-call-button" onClick={handleStartCall} className="button" disabled>Start Call</button>
+//         <button id="accept-call-button" onClick={handleAcceptCall} className="button" disabled>Accept Call</button>
+//         <button id="hangup-call-button" onClick={handleHangUpCall} className="button" disabled>Hang Up</button>
+//         <button id="start-video-button" onClick={handleStartVideo} className="button" disabled>Start Video</button>
+//         <button id="stop-video-button" onClick={handleStopVideo} className="button" disabled>Stop Video</button>
+//         <div id="connectedLabel" hidden className="status">Connected</div>
+//         <div id="localVideoContainer" className="local-video" ref={localVideoRef} hidden></div>
+//         <div id="remoteVideosGallery" className="remote-videos" hidden></div>
+//       </div>
+//     </div>
+//   );
+// };
+
+import React, { useEffect } from 'react';
 
 const VideoChat = () => {
-  const [userAccessToken, setUserAccessToken] = useState('');
-  const [calleeAcsUserId, setCalleeAcsUserId] = useState('');
-  const [callAgent, setCallAgent] = useState(null);
-  const [deviceManager, setDeviceManager] = useState(null);
-  const [call, setCall] = useState(null);
-  const [incomingCall, setIncomingCall] = useState(null);
-  const [localVideoStream, setLocalVideoStream] = useState(null);
-  const [localVideoStreamRenderer, setLocalVideoStreamRenderer] = useState(null);
-  const [connected, setConnected] = useState(false);
-  const [remoteVideoStreams, setRemoteVideoStreams] = useState([]);
-
   useEffect(() => {
-    const fetchAccessToken = async () => {
-      try {
-        const response = await fetch(API_ENDPOINT, { method: 'POST' });
-        const data = await response.json();
-        setUserAccessToken(data.token);
-      } catch (error) {
-        console.error('Failed to fetch access token', error);
-      }
-    };
-
-    fetchAccessToken();
+    window.location.href = 'http://localhost:8080/';
   }, []);
 
-  useEffect(() => {
-    if (callAgent) {
-      callAgent.on('incomingCall', async (args) => {
-        setIncomingCall(args.incomingCall);
-      });
-    }
-  }, [callAgent]);
-
-  const initializeCallAgent = async () => {
-    try {
-      const callClient = new CallClient();
-      const tokenCredential = new AzureCommunicationTokenCredential(userAccessToken.trim());
-      const agent = await callClient.createCallAgent(tokenCredential);
-      const manager = await callClient.getDeviceManager();
-      await manager.askDevicePermission({ video: true });
-      await manager.askDevicePermission({ audio: true });
-      setCallAgent(agent);
-      setDeviceManager(manager);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const createLocalVideoStream = async () => {
-    const camera = (await deviceManager.getCameras())[0];
-    if (camera) {
-      return new LocalVideoStream(camera);
-    } else {
-      console.error('No camera device found on the system');
-    }
-  };
-
-  const displayLocalVideoStream = async (localVideoStream) => {
-    try {
-      const renderer = new VideoStreamRenderer(localVideoStream);
-      const view = await renderer.createView();
-      document.getElementById('localVideoContainer').appendChild(view.target);
-      setLocalVideoStreamRenderer(renderer);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const displayRemoteVideoStream = async (remoteVideoStream, participantId) => {
-    try {
-      const renderer = new VideoStreamRenderer(remoteVideoStream);
-      const view = await renderer.createView();
-      const remoteVideoContainer = document.getElementById(`remoteVideoContainer-${participantId}`);
-      if (remoteVideoContainer) {
-        remoteVideoContainer.appendChild(view.target);
-      } else {
-        console.error(`No container found for remote participant: ${participantId}`);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const startCall = async () => {
-    try {
-      const localStream = await createLocalVideoStream();
-      const options = localStream ? { localVideoStreams: [localStream] } : undefined;
-      const newCall = callAgent.startCall([{ communicationUserId: calleeAcsUserId.trim() }], { videoOptions: options });
-      subscribeToCall(newCall);
-      setCall(newCall);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const acceptCall = async () => {
-    try {
-      const localStream = await createLocalVideoStream();
-      const options = localStream ? { localVideoStreams: [localStream] } : undefined;
-      const newCall = await incomingCall.accept({ videoOptions: options });
-      subscribeToCall(newCall);
-      setCall(newCall);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const subscribeToCall = (call) => {
-    call.on('stateChanged', async () => {
-      if (call.state === 'Connected') {
-        setConnected(true);
-        subscribeToRemoteParticipants(call.remoteParticipants);
-      } else if (call.state === 'Disconnected') {
-        setConnected(false);
-        setRemoteVideoStreams([]);
-      }
-    });
-
-    call.localVideoStreams.forEach(async (lvs) => {
-      setLocalVideoStream(lvs);
-      await displayLocalVideoStream(lvs);
-    });
-
-    call.on('localVideoStreamsUpdated', (e) => {
-      e.added.forEach(async (lvs) => {
-        setLocalVideoStream(lvs);
-        await displayLocalVideoStream(lvs);
-      });
-      e.removed.forEach(() => {
-        setLocalVideoStream(null);
-      });
-    });
-
-    call.on('remoteParticipantsUpdated', (e) => {
-      subscribeToRemoteParticipants(e.added);
-      e.removed.forEach((participant) => {
-        setRemoteVideoStreams((streams) => streams.filter((stream) => stream.participantId !== participant.identifier.communicationUserId));
-      });
-    });
-  };
-
-  const subscribeToRemoteParticipants = (participants) => {
-    participants.forEach((participant) => {
-      participant.on('videoStreamsUpdated', (e) => {
-        e.added.forEach((videoStream) => {
-          setRemoteVideoStreams((streams) => [
-            ...streams,
-            { participantId: participant.identifier.communicationUserId, videoStream }
-          ]);
-          displayRemoteVideoStream(videoStream, participant.identifier.communicationUserId);
-        });
-        e.removed.forEach((videoStream) => {
-          setRemoteVideoStreams((streams) => streams.filter((stream) => stream.videoStream !== videoStream));
-        });
-      });
-    });
-  };
-
-  const hangUpCall = async () => {
-    await call.hangUp();
-    setCall(null);
-  };
-
-  const startVideo = async () => {
-    const localStream = await createLocalVideoStream();
-    await call.startVideo(localStream);
-  };
-
-  const stopVideo = async () => {
-    await call.stopVideo(localVideoStream);
-  };
-
   return (
-    <div>
-      <h4>Live Tutoring</h4>
-      <button id="initialize-call-agent" type="button" onClick={initializeCallAgent}>
-        Initialize Call Agent
-      </button>
-      <br />
-      <br />
-      <input
-        id="callee-acs-user-id"
-        type="text"
-        placeholder="Enter callee's Azure Communication Services user identity in format: '8:acs:resourceId_userId'"
-        value={calleeAcsUserId}
-        onChange={(e) => setCalleeAcsUserId(e.target.value)}
-        style={{ marginBottom: '1em', width: '500px', display: 'block' }}
-      />
-      <button id="start-call-button" type="button" onClick={startCall} disabled={!callAgent}>
-        Start Call
-      </button>
-      <button id="hangup-call-button" type="button" onClick={hangUpCall} disabled={!connected}>
-        Hang up Call
-      </button>
-      <button id="accept-call-button" type="button" onClick={acceptCall} disabled={!incomingCall}>
-        Accept Call
-      </button>
-      <button id="start-video-button" type="button" onClick={startVideo} disabled={!connected}>
-        Start Video
-      </button>
-      <button id="stop-video-button" type="button" onClick={stopVideo} disabled={!connected}>
-        Stop Video
-      </button>
-      <br />
-      <br />
-      <div id="connectedLabel" style={{ color: '#13bb13', display: connected ? 'block' : 'none' }}>
-        Call is connected!
-      </div>
-      <br />
-      <div id="remoteVideosGallery" style={{ width: '40%', display: connected ? 'block' : 'none' }}>
-        {remoteVideoStreams.map((stream) => (
-          <div key={stream.participantId} id={`remoteVideoContainer-${stream.participantId}`}>
-            Remote participant video stream for: {stream.participantId}
-          </div>
-        ))}
-      </div>
-      <br />
-      <div id="localVideoContainer" style={{ width: '30%', display: localVideoStream ? 'block' : 'none' }}>
-        Local video stream:
-      </div>
-    </div>
+    <div>Redirecting to Video Chat...</div>
   );
-};
+}
 
 export default VideoChat;

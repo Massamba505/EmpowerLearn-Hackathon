@@ -10,12 +10,14 @@ router.post('/token', async (req, res) => {
   try {
     const user = await client.createUser();
     const tokenResponse = await client.getToken(user, ["voip"]);
+    console.log(tokenResponse);
     res.json(tokenResponse);
   } catch (error) {
     console.error(error);
     res.status(500).send('Error generating token');
   }
 });
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
