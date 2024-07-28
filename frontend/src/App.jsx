@@ -16,6 +16,7 @@ import VideoChat from './components/VideoChat/VideoChat';
 import CreateForumPage from './components/CreateForumPage/CreateForumPage';
 import AskQuestionPage from './components/AskQuestionPage/AskQuestionPage';
 import ForumPage from './components/ForumPage/ForumPage';
+import BlobListPage from './components/BlobList/BlobListPage';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/forum/:groupName" element={<ForumPage/>}/>
         <Route path="/create-forum/" element={<CreateForumPage/>}/>
         <Route path="/ask-question/" element={<AskQuestionPage/>}/>
+        <Route path="/uploaded-videos" element={<BlobListPage />} />
         {/* Protected routes */}
         <Route path="/home" element={<Auth element={<HomePage />} requiresAuth={true} />} />
         <Route path="/live-tutoring" element={<Auth element={<LiveTutoringPage />} requiresAuth={true} />} />
