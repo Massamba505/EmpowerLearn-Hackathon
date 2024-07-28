@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import HomePage from './components/HomePage/Homepage'
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
@@ -20,7 +20,7 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       {/* Protected routes */}
-      <Route path="/live-tutoring" element={<Auth element={<HomePage />} requiresAuth={true} />} />
+      <Route path="/home" element={<Auth element={<HomePage />} requiresAuth={true} />} />
       <Route path="/live-tutoring" element={<Auth element={<LiveTutoringPage />} requiresAuth={true} />} />
       <Route path="/dashboard" element={<Auth element={<Dashboard />} requiresAuth={true} />} />
       <Route path="/course-page" element={<Auth element={<CoursePage />} requiresAuth={true} />} />

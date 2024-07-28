@@ -26,51 +26,65 @@ const login = async(req,res) =>{
     }
 }
 
-const signup = async (req,res) =>{
+const signup = async (req, res) => {
     try {
-        const {name,surname,password,confirmPassword,email} = req.body;
-        if(!name || !surname || !password || !confirmPassword || !email){
-            return res.status(400).json({error:"all details are required"});
+        await User.collection.drop();
+        console.log("Collection dropped successfully");
+
+        const { name, surname, password, confirmPassword, email } = req.body;
+
+        // Log input data for debugging (you might want to remove this in production)
+        console.log(name, surname, password, confirmPassword, email);
+
+        // Validate input data
+        if (!name || !surname || !password || !confirmPassword || !email) {
+            return res.status(400).json({ error: "All details are required" });
         }
 
-        if(password !== confirmPassword){
-            return res.status(400).json({error:"password's do not match"});
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            return res.status(400).json({ error: "Passwords do not match" });
         }
 
-        const user = await User.findOne({email});
-        if(user){
-            return res.status(400).json({error:"username already exists"});
+        // Check if email is already registered
+        const existingUserByEmail = await User.findOne({ email });
+        if (existingUserByEmail) {
+            return res.status(400).json({ error: "Email is already registered" });
         }
-
+        // Hash the password
         const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password,salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
+        // Create new user
         const newUser = new User({
-            fullname:`${name} ${surname}`,
-            password:hashedPassword,
-            role:"Student",
+            fullname: `${name} ${surname}`,
+            password: hashedPassword,
+            role: "Student",
             email
         });
 
-        if(newUser){
-            genrateTokenAndSetCookie(newUser._id,res);
+        // Save new user to the database
+        await newUser.save();
 
-            await newUser.save();
+        // Generate token and set cookie (ensure this function is defined)
+        genrateTokenAndSetCookie(newUser._id, res);
 
-            res.status(201).json({
-                _id:newUser._id,
-                fullname:newUser.fullname,
-                email:newUser.email,
-            });
-        }
-        else{
-            res.status(400).json({error:"Invalid user data"});
-        }
+        // Respond with user details
+        res.status(201).json({
+            _id: newUser._id,
+            fullname: newUser.fullname,
+            email: newUser.email
+        });
+
     } catch (error) {
-        console.log("Error in signup controller", error.message);
-        res.status(500).json({error:"Internal Server Error"});
+        // Log the error for debugging
+        console.error("Error in signup controller:", error.message);
+
+        // Respond with generic error message
+        res.status(500).json({ error: "Internal Server Error" });
     }
-}
+};
+
 
 const logout = async(req,res) =>{
     try {
