@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "install":"cd backend && npm install && cd ../frontend && npm install",
   "start": "concurrently \"npm run server\" \"npm run client\"",
   "server": "cd backend && nodemon ./bin/www",
   "client": "cd frontend && npm run dev"
