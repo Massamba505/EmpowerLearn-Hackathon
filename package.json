@@ -5,7 +5,7 @@
   "scripts": {
     "install": "cd backend && npm install && cd ../frontend && npm install && cd ../calling-quickstart && npm install",
     "start": "concurrently \"npm run server\" \"npm run client\" \"npm run live\"",
-    "server": "cd backend && nodemon ./bin/www",
+    "server": "cd backend && node ./bin/www",
     "client": "cd frontend && npm run dev",
     "live": "cd calling-quickstart && npm start"
   },
