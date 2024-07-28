@@ -1,0 +1,35 @@
+/* VideoUploadPage.css */
+.video-upload-page {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  .video-upload {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+  }
+  
+  .video-upload h2 {
+    text-align: center;
+  }
+  
+  .video-upload input[type="file"] {
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .video-upload button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+  }
+  
+  .video-upload p {
+    text-align: center;
+    color: #333;
+  }
+  
