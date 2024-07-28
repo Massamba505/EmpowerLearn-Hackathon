@@ -19,6 +19,6 @@ app.use(express.static(path.resolve(__dirname, '../frontend',"index.html")));
 
 app.use('/api', indexRouter);
 app.use('/api/auth', authRouter);
-app.use('/api/users', usersRouter);
+app.use('/api/user', usersRouter);
 
 module.exports = app;
