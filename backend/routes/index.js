@@ -67,10 +67,13 @@ router.post('/ask_question', (req, res) => {
 });
 
 router.post('/posts', (req, res) => {
-  const formData = req.body;
+  const {username,message,group_name} = req.body;
+  console.log(req.body)
   const url = 'https://lamp.ms.wits.ac.za/home/s2574120/insert_post.php';
-  console.log(formData);
-  request.post({ url, form: formData }, (error, response, body) => {
+  console.log(username);
+  console.log(message);
+  console.log(group_name);
+  request.post({ url, form: {username:username,message:message,group_name:group_name} }, (error, response, body) => {
     if (error) {
       return res.status(500).send(error);
     }
